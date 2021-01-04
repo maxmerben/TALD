@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Samira Verhees" />
+
+
+<title>Perfect</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 54px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h2 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h3 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h4 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h5 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h6 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">TALD</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="./about.html">About</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    <span class="fa fa-atlas"></span>
+     
+    Features
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="./topics.html">Major topics</a>
+    </li>
+    <li>
+      <a href="./features.html">Features</a>
+    </li>
+    <li>
+      <a href="./method.html">Method</a>
+    </li>
+  </ul>
+</li>
+<li>
+  <a href="./changes.html">Changes</a>
+</li>
+<li>
+  <a href="./references.html">References</a>
+</li>
+<li>
+  <a href="./team.html">Team</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Perfect</h1>
+<h4 class="author">Samira Verhees</h4>
+
+</div>
+
+
+<hr />
+<div id="chapter" class="section level1">
+<h1>Chapter</h1>
+<p>See <a href="perfect_map.html">data and maps</a>.</p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The perfect indicates the current relevance of an event completed in the past. The sentence in example (1) with the Botlikh Perfect could be uttered, for example, in reply to a question whether the speaker is hungry or wants something to eat.</p>
+<ol class="example" style="list-style-type: decimal">
+<li>Botlikh <span class="citation">(Alexeyev and Verhees, <a href="#ref-alexeyevverheesunpub">n.d.</a>)</span></li>
+</ol>
+<ul>
+<table>
+<tr>
+<td>
+<i>den 
+</td>
+</i>
+<td>
+<i>henala 
+</td>
+</i>
+<td>
+<i><b>inku-j-č’a</b> 
+</td>
+</i>
+<td>
+<i><b>ida</b> 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+I 
+</td>
+<td>
+still 
+</td>
+<td>
+eat-is-neg.cvb 
+</td>
+<td>
+cop 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+‘I <b>haven’t eaten</b> yet.’ (so I could eat something now)
+</td>
+</tr>
+</table>
+</ul>
+<p>Current relevance is an umbrella-term subsuming several more specific meanings <span class="citation">(Ritz <a href="#ref-ritz2012">2012</a>: 882-883; McCawley <a href="#ref-mccawley1971">1971</a>; Comrie <a href="#ref-comrie1976">1976</a>)</span>:</p>
+<ul>
+<li>Resultative perfect – <i>Patimat <b>has broken</b> her arm.</i> (the arm is now broken)</li>
+<li>Continuative – <i>Patimat <b>has lived</b> in the village for 40 years.</i> (and she still lives there)</li>
+<li>Experiential – <i>Patimat <b>has been</b> to Japan.</i> (at least once in her life)</li>
+<li>“Hot news” perfect – <i>Patimat <b>has</b> just <b>arrived</b>.</i></li>
+</ul>
+<p>In this chapter I will use the term perfect to refer to verb forms with a current relevance function.</p>
+<p>Perfects are typically periphrastic forms <span class="citation">(Bybee and Dahl <a href="#ref-bybeedahl1989">1989</a>: 56)</span>. Common sources include resultative and completive constructions <span class="citation">(Bybee, Perkins, and Pagliuca <a href="#ref-bybee1994">1994</a>: 105)</span>. Only the former are relevant for the eastern Caucasus. Resultative constructions typically consist of (or derive from) a non-finite form with past or perfective semantics, and a stative auxiliary such as ‘be’ or ‘have’ with present tense reference <span class="citation">(Bybee, Perkins, and Pagliuca <a href="#ref-bybee1994">1994</a>: 55–57)</span>.</p>
+<p><b>Resultative constructions</b> render a present state as the result of a past action <span class="citation">(Nedjalkov and Jaxontov <a href="#ref-nedjalkovjaxontov1988">1988</a>: 6)</span>. They form monovalent, stative predicates, as in example (2), and are mostly restricted to change-of-state verbs.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<ol start="2" class="example" style="list-style-type: decimal">
+<li>Avar <span class="citation">(Verhees <a href="#ref-verhees2018">2018</a>: 263)</span></li>
+</ol>
+<ul>
+<table>
+<tr>
+<td>
+<i>nuc’a 
+</td>
+</i>
+<td>
+<i>(žegi) 
+</td>
+</i>
+<td>
+<i><b>qan</b> 
+</td>
+</i>
+<td>
+<i><b>b-ugo</b> 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+door 
+</td>
+<td>
+(still) 
+</td>
+<td>
+close.cvb 
+</td>
+<td>
+n-be.prs 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+‘The door <b>is</b> (still) <b>closed</b>.’
+</td>
+</tr>
+</table>
+</ul>
+<p>The <b>resultative perfect</b>, illustrated in example (3), represents a more progressed stage of grammaticalization. In contrast to the resultative proper it maintains the argument structure of the original lexical verb <span class="citation">(Плунгян <a href="#ref-plungian2016">2016</a>: 10)</span>. The result is a less stative predicate that is incompatible with adverbs of unlimited duration like <i>žegi</i> ‘still’. Resultative proper and resultative perfect can be expressed by distinct constructions or with the same form.</p>
+<ol start="3" class="example" style="list-style-type: decimal">
+<li>Avar <span class="citation">(Verhees <a href="#ref-verhees2018">2018</a>: 263)</span></li>
+</ol>
+<ul>
+<table>
+<tr>
+<td>
+<i>di-ca 
+</td>
+</i>
+<td>
+<i>nuc’a 
+</td>
+</i>
+<td>
+<i><b>qan</b> 
+</td>
+</i>
+<td>
+<i><b>b-ugo</b> 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+I-erg 
+</td>
+<td>
+door 
+</td>
+<td>
+close.cvb 
+</td>
+<td>
+n-be.prs 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+‘I <b>have closed</b> the door.’
+</td>
+</tr>
+</table>
+</ul>
+<p>A perfect can subsequently develop other functions through conversational implicature, including: indirect evidentiality, mirativity, and epistemic modality (see chapter <a href="evidentiality_tense.html">Evidentiality in the tense system</a>).</p>
+<p>The aim of this chapter is to show the distribution of different formal structures (e.g. synthetic vs. periphrastic) and various possible functions of perfects.</p>
+</div>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>The dataset for this chapter contains 74 verb forms from 47 idioms.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> 10 of these verb forms appear to be dedicated resultative constructions that exist alongside a perfect. Possibly these forms have additional current relevance functions which are simply not described. Since we cannot be sure at this stage, they are discussed separately throughout this chapter. 10 other forms are only reported to have an indirect evidential function. 8 of these can be diachronically linked to the perfect through their formal appearance and comparison with closely related idioms. The remaining two cases are Axaxdɘrɘ Akhvakh and Zaqatala Avar, which both have an indirect evidential past suffix of unclear origins.</p>
+<div id="structure" class="section level3">
+<h3>Structure</h3>
+<p>About half of the forms in the sample (32/64) are periphrastic while the rest is synthetic (31/64).<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Of 31 synthetic forms, 5 result from morphologization of the auxiliary. In 12 cases, the synthetic perfect coincides with a non-finite form. It would seem plausible to assume that this results from a dropped auxiliary, given that periphrastic constructions are rather common. This scenario can be confirmed for Hinuq and Tsez, where the auxiliary resurfaces under negation. In other cases, however, the alternative scenario – syncretism through desubordination of a non-finite construction – cannot be ruled out. The Udi perfect is formed with a suffix that possibly also traces back to a periphrastic construction, see Maisak <span class="citation">(<a href="#ref-maisak2018">2018</a>: 158–160)</span>.</p>
+<p>The lexical verb most commonly takes the form of a converb (37/64), while participles are less frequent (18/37).<a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a> The main perfect form is based on a participle in Budukh, Armenian, and the Turkic languages. The auxiliary verb often takes the form of a defective copula ‘be’, ‘be at’ which can also head non-verbal predication. Dargwa varieties employ so-called predicative markers: a mixed paradigm of clitic person markers for first and second person and a copula for third person.</p>
+<p>Among the resultative constructions 8/10 are periphrastic, and the proportion of converbs with respect to participles is 50-50 for this group. All of these constructions exist alongside a perfect in their respective languages.</p>
+</div>
+<div id="semantics" class="section level3">
+<h3>Semantics</h3>
+<p>Current relevance is widely attested, though it seems to be limited mostly to resultative perfect. This could be due to a lack of description.</p>
+<p>Many of the perfect forms also preserve the narrow resultative function (35/64), cf. the resultative and resultative perfect uses of the Tabasaran Perfect in examples (4) and (5), respectively.</p>
+<ol start="4" class="example" style="list-style-type: decimal">
+<li>Tabasaran <span class="citation">(Maisak, <a href="#ref-maisakunpub">n.d.</a>)</span></li>
+</ol>
+<ul>
+<table>
+<tr>
+<td>
+<i>barχl.i-in 
+</td>
+</i>
+<td>
+<i>muχ 
+</td>
+</i>
+<td>
+<i><b>d-a(b)x-na</b>. 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+carpet-super 
+</td>
+<td>
+barley 
+</td>
+<td>
+pv-(cl)pour.pfv-prf 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+‘There is barley (lit. barley <b>is poured</b>) on the carpet.’
+</td>
+</tr>
+</table>
+</ul>
+<ol start="5" class="example" style="list-style-type: decimal">
+<li>Tabasaran <span class="citation">(Maisak, <a href="#ref-maisakunpub">n.d.</a>)</span></li>
+</ol>
+<ul>
+<table>
+<tr>
+<td>
+<i>uwu 
+</td>
+</i>
+<td>
+<i>läχˁin 
+</td>
+</i>
+<td>
+<i><b>d-ap’-na=wa</b> 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+you 
+</td>
+<td>
+work 
+</td>
+<td>
+pv-do.pfv-prf=2sg 
+</td>
+</tr>
+<tr>
+<td>
+<i>hamus 
+</td>
+</i>
+<td>
+<i>ʁaraχ 
+</td>
+</i>
+<td>
+<i>sejir 
+</td>
+</i>
+<td>
+<i>ap’-in! 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+now 
+</td>
+<td>
+go.away.imp 
+</td>
+<td>
+walk 
+</td>
+<td>
+do-imp 
+</td>
+</tr>
+<tr>
+<td colspan="4">
+‘You <b>have done</b> your work, now go and take a walk!’
+</td>
+</tr>
+</table>
+</ul>
+<p>Continuative so far is attested only for Avar in <span class="citation">(Verhees <a href="#ref-verhees2018">2018</a>: 271)</span> and this claim needs to be checked, since it reflects the speech of only one speaker.</p>
+<ol start="6" class="example" style="list-style-type: decimal">
+<li>Avar <span class="citation">(Verhees <a href="#ref-verhees2018">2018</a>: 271)</span></li>
+</ol>
+<ul>
+<table>
+<tr>
+<td>
+<i>do-j 
+</td>
+</i>
+<td>
+<i><b>j-alah-un</b> 
+</td>
+</i>
+<td>
+<i><b>j-igo</b> 
+</td>
+</i>
+<td>
+<i>ɬab-go 
+</td>
+</i>
+<td>
+<i>saʕat-aɬ 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+dem-f 
+</td>
+<td>
+f-watch-cvb 
+</td>
+<td>
+f-be.prs 
+</td>
+<td>
+three-num 
+</td>
+<td>
+hour-erg 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+‘She <b>has watched</b> [TV] for three hours (and she is still watching).’
+</td>
+</tr>
+</table>
+</ul>
+<p>The experiential function is usually expressed either by a perfective past or a dedicated construction (7). Exceptions include Bats, Kryz, Kumyk, and Udi.</p>
+<ol start="7" class="example" style="list-style-type: decimal">
+<li>Dargwa: Shiri <span class="citation">(Belyaev <a href="#ref-belyaev2018">2018</a>: 86)</span></li>
+</ol>
+<ul>
+<table>
+<tr>
+<td>
+<i>di-la 
+</td>
+</i>
+<td>
+<i>rucːi 
+</td>
+</i>
+<td>
+<i><b>či(r)ag-ib-zi-w=di=w</b> 
+</td>
+</i>
+<td>
+<i>ʕät? 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+me-gen 
+</td>
+<td>
+sister 
+</td>
+<td>
+(f)see.pfv-ptcp-attr-m=2=gq 
+</td>
+<td>
+thee.dat 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+‘<b>Have</b> you (ever) <b>seen</b> [i.e. <b>met</b>] my sister?’
+</td>
+</tr>
+</table>
+</ul>
+<p>The “hot news” perfect is only marginally attested. This could be due to the pragmatic nature of this function, which makes it difficult to detect and elicit.</p>
+<ol start="8" class="example" style="list-style-type: decimal">
+<li>Udi: Nizh <span class="citation">(Майсак <a href="#ref-maisak2016">2016</a>: 340)</span></li>
+</ol>
+<ul>
+<table>
+<tr>
+<td>
+<i>qːonaʁ-χo=ne 
+</td>
+</i>
+<td>
+<i><b>har-e</b>! 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+guest-pl=3sg 
+</td>
+<td>
+come-prf 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+[What is that noise at the gates?] ‘The guests <b>have arrived</b>!’
+</td>
+</tr>
+</table>
+</ul>
+<p>Indirect evidentiality is generally common but notably absent in a particular area (see chapter <a href="evidentiality_tense.html">Evidentiality in the tense system</a>).</p>
+</div>
+</div>
+<div id="areal-distribution" class="section level2">
+<h2>Areal distribution</h2>
+<p>The distribution of various functions associated with the perfect as a typological category do not give off a strong areal signal, with the exception of indirect evidentiality. Experiential constructions are not very common overall, though this could result from a lack of description. Structural parameters do not show a clear genealogical or areal pattern either.</p>
+</div>
+<div id="related-features" class="section level2">
+<h2>Related features</h2>
+<ul>
+<li><a href="evidentiality_tense.html">Evidentiality in the tense system</a></li>
+<li><a href="particles.html">Particles of reported speech and inference</a></li>
+<li><a href="">Evidential auxiliaries</a></li>
+</ul>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2>References</h2>
+<div id="refs" class="references">
+<div id="ref-alexeyevverheesunpub">
+<p>Alexeyev, Mikhail, and Samira Verhees. n.d. “Botlikh.” Edited by Yury Koryakov and Timur Maisak. Berlin/New York: De Gruyter Mouton.</p>
+</div>
+<div id="ref-belyaev2018">
+<p>Belyaev, Oleg. 2018. “Aorist, Resultative and Perfect in Shiri Dargwa and Beyond.” In <em>The Semantics of Verbal Categories in Nakh-Daghestanian Languages</em>, edited by Diana Forker and Timur Maisak, 80–119. Leiden: Brill.</p>
+</div>
+<div id="ref-bybeedahl1989">
+<p>Bybee, Joan, and Östen Dahl. 1989. “The Creation of Tense and Aspect Systems in the Languages of the World.” <em>Studies in Language</em> 13 (1): 51–103.</p>
+</div>
+<div id="ref-bybee1994">
+<p>Bybee, Joan L., Revere Perkins, and William Pagliuca. 1994. <em>The Evolution of Grammar: Tense, Aspect and Modality in the Languages of the World</em>. Chicago/London: The University of Chicago Press.</p>
+</div>
+<div id="ref-comrie1976">
+<p>Comrie, Bernard. 1976. <em>Aspect</em>. Cambridge: Cambridge University Press.</p>
+</div>
+<div id="ref-maisak2018">
+<p>Maisak, Timur. 2018. “The Aorist/Perfect Distinction in Nizh Udi.” In <em>The Semantics of Verbal Categories in Nakh-Daghestanian Languages</em>, edited by Diana Forker and Timur Maisak, 120–65. Leiden: Brill.</p>
+</div>
+<div id="ref-maisakunpub">
+<p>———. n.d. “Structural and Functional Variations of the Perfect in Lezgic Languages.” In <em>The Perfect Volume</em>, edited by Kristin Melum Eide and Marc Fryd. Amsterdam: John Benjamins.</p>
+</div>
+<div id="ref-mccawley1971">
+<p>McCawley, J.D. 1971. “Tense and Time Reference in English.” In <em>Studies in Linguistic Semantics</em>, edited by C.J. Fillmore and T. Langendoen, 96–113. New York: Holt, Rinehart; Winston.</p>
+</div>
+<div id="ref-nedjalkovjaxontov1988">
+<p>Nedjalkov, Vladimir, and Sergei Jaxontov. 1988. “The Typology of Resultative Constructions.” In <em>Typology of Resultative Constructions</em>, edited by Vladimir Nedjalkov, 3–62. Amsterdam: John Benjamins.</p>
+</div>
+<div id="ref-ritz2012">
+<p>Ritz, Marie-Eve. 2012. “Perfect Tense and Aspect.” In <em>The Oxford Handbook of Tense and Aspect</em>, edited by Robert I. Binnick, 881–907. Oxford: Oxford University Press.</p>
+</div>
+<div id="ref-verhees2018">
+<p>Verhees, Samira. 2018. “The Perfect in Avar and Andi: Cross-Linguistic Variation Among Two Closely Related East Caucasian Languages.” In <em>Tense, Aspect, Modality and Evidentiality: Cross-Linguistic Perspectives</em>, edited by Dalila Ayoun, Agnès Celle, and Laure Lansari, 261–80. Amsterdam: John Benjamins.</p>
+</div>
+<div id="ref-maisak2016">
+<p>Майсак, Т.А. 2016. “Перфект и аорист в ниджском диалекте удинского языка.” In <em>Типология перфекта</em>, edited by Т.А. Майсак, В.А. Плунгян, and К.П. Семёнова, 315–78. Санкт-Петербург: Наука.</p>
+</div>
+<div id="ref-plungian2016">
+<p>Плунгян, В.А. 2016. “К типологии перфекта в языках мира. Предисловие.” In <em>Типология перфекта</em>, edited by Т.А. Майсак, В.А. Плунгян, and К.П. Семёнова, 7–38. Санкт-Петербург: Наука.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>In East Caucasian certain present states are always rendered with a resultative form of an inchoative verb, because the languages lack a stative lexeme. These states include certain postures (‘standing’, ‘lying down’) and physical states (‘sleeping’, ‘being sick’). The exact inventory of such predicates in individual languages, as well as the set shared across the branches of the family, remains a topic for future investigation.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>The average number of forms is 1.5: 24 idioms have 1 form, 19 have 2, and 4 have 3.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>Botlikh uses both options as free variants and is counted separately.<a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>The perfects of Ingush and Chechen are considered to be based on converbs, while the Bats perfect is analyzed as based on a participle. It actually concerns a set of cognate forms that can act as a converb and a participle in all three languages. In the dataset for this chapter they form a separate category. Another exception is Khinalug, where both attested perfects are based on the resultative stem of the lexical verb.<a href="#fnref4" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+<p align='center'>2019<script>new Date().getFullYear()>2019&&document.write("-"+new Date().getFullYear());</script>,  Linguistic Convergence Laboratory, NRU HSE</p>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
