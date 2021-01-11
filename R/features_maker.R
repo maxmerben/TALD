@@ -15,6 +15,9 @@ extr_map <- function(fe) {
   meta_core <- meta %>% # remove idioms not (yet) recognized as distinct
     filter(core == "yes")
   
+  fe <- fe %>% 
+    filter(core == "yes")
+  
   vill_meta <- merge(vill, meta_core, by = "lang") # merge villages and coordinates with language metadata
   vill_meta <- vill_meta %>% 
     mutate(idiom = idiom.y)  # почему там два разных идиома?
@@ -52,6 +55,9 @@ gen_map <- function(fe) {
     filter(kutans == 'FALSE')  # убирает кутаны
   
   meta_core <- meta %>% # remove idioms not (yet) recognized as distinct
+    filter(core == "yes")
+  
+  fe <- fe %>% 
     filter(core == "yes")
   
   vill_meta <- merge(vill, meta_core, by = "lang") # merge villages and coordinates with language metadata
