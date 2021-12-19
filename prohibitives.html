@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Samira Ochs" />
+
+
+<title>Prohibitive and its relation with the imperative</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/lumen.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+<link rel="stylesheet" href="css/styles.css" type="text/css" />
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 54px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h2 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h3 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h4 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h5 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.section h6 {
+  padding-top: 59px;
+  margin-top: -59px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">TALD</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="./about.html">About</a>
+</li>
+<li>
+  <a href="./features.html">
+    <span class="fa fa-atlas"></span>
+     
+    Features
+  </a>
+</li>
+<li>
+  <a href="./changes.html">Changes</a>
+</li>
+<li>
+  <a href="./references.html">References</a>
+</li>
+<li>
+  <a href="./team.html">Team</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">Prohibitive and its relation with the imperative</h1>
+<h4 class="author">Samira Ochs</h4>
+<h4 class="date">Last update: November 2021</h4>
+
+</div>
+
+
+<hr />
+<div id="chapter" class="section level1">
+<h1>Chapter</h1>
+<p>See <a href="prohibitives_map.html">data and maps</a>.</p>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The prohibitive is typically defined as the negative imperative, i.e. it “implies making someone not do something, having the effect of forbidding, preventing, or restricting” <span class="citation">(Aikhenvald, <a href="#ref-aikhenvald2017">2017</a>: 3)</span>. This chapter focuses on the formation of the prohibitive in the languages of Daghestan and neighbouring regions, analysing two different aspects of the morphological coding: First, the verb form (especially whether it is an imperative form or not), and second, the type of negation marker/affix used. Based on this, the general encoding types are deduced. Additionally, the phonological form of the markers is shortly analysed.</p>
+<p>In the languages of the world, the most common strategy to code the prohibitive is to use the second (singular) imperative and a sentential negative strategy not found in declaratives (37% of the sample <span class="citation">(Auwera, <a href="#ref-auweralejeune2013">2013</a>)</span>, see <a href="https://wals.info/chapter/71" class="uri">https://wals.info/chapter/71</a>). Two other common strategies involve the use of non-imperative verbal constructions and a negation marker not found in declaratives (29%), as well as the use of the imperative combined with a negation found in declaratives (23%). The use of a non-imperative verbal construction together with a negative strategy found in declaratives is the least common strategy in the languages of the world (11%).</p>
+<p>Interestingly, “[c]ategories expressed in positive imperatives tend to be neutralized under negation” <span class="citation">(Aikhenvald, <a href="#ref-aikhenvald2017">2017</a>: 19)</span>. Some languages of the TALD sample, for instance, differentiate between transitivity and intransitivity in positive imperatives but use only one form for the prohibitive. Likewise, only one stem type is used for prohibitives if the language has both a perfective and an imperfective stem.</p>
+<p>While the variation of stem types is only superficially coded in the WALS (i.e. <strong>normal imperative</strong> vs. <strong>special imperative</strong>; see <a href="https://wals.info/feature/71A#2/19.3/149.1" class="uri">https://wals.info/feature/71A#2/19.3/149.1</a>), the types of prohibitive markers are not considered at all. For the TALD sample, the stem types are examined in more detail, i.e. non-imperative verb forms are individually identified and listed. Furthermore, the different types of affixes and particles used as prohibitive markers are indicated. Our goal is to classify the languages according to the verb form and negation marker used to encode the prohibitive.</p>
+</div>
+<div id="results" class="section level2">
+<h2>Results</h2>
+<div id="non-imperative-verb-form-special-prohibitive-marker" class="section level3">
+<h3>Non-imperative verb form + special prohibitive marker</h3>
+<p>Most languages in this category use the <strong>bare verb stem</strong> to form the prohibitive. Other stems are also attested, although much less frequently. The prohibitive marker can be a suffix, circumfix, infix, or prefix, but generally, <strong>suffixes</strong> are preferred. Table 1 presents the combinations found in the sample, showing that <strong>bare stem + suffix</strong> is the most common encoding type.</p>
+<p>Table 1. Combinations of non-imperative verb forms and special prohibitive affixes</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th>Bare stem</th>
+<th>Future stem</th>
+<th>Masdar</th>
+<th>NA</th>
+<th>Past stem</th>
+<th>Present stem</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Circumfix</td>
+<td>3</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>-</td>
+<td>4</td>
+</tr>
+<tr class="even">
+<td>Infix</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>-</td>
+<td>1</td>
+<td>-</td>
+<td>2</td>
+</tr>
+<tr class="odd">
+<td>Prefix</td>
+<td>1</td>
+<td>1</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>2</td>
+</tr>
+<tr class="even">
+<td>Suffix</td>
+<td>10</td>
+<td>-</td>
+<td>-</td>
+<td>1</td>
+<td>1</td>
+<td>4</td>
+<td>16</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>14</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>3</td>
+<td>3</td>
+<td>24</td>
+</tr>
+</tbody>
+</table>
+<p>The following 24 languages belong to this category:</p>
+<ul>
+<li>All 9 Avar-Andic languages: Northern Akhvakh, Andi, Standard Avar, Bagvalal, Botlikh, Chamalal, Godoberi, Karata, Tindi</li>
+<li>Standard Dargwa (including all varieties on the dialect continuum)</li>
+<li>Lak (isolate)</li>
+<li>8 Lezgic languages (except for Udi): Agul, Archi, Budukh, Kryz, Lezgian, Rutul, Tabasaran, Tsakhur</li>
+<li>All 5 Tsezic languages: Bezhta, Hinuq, Hunzib, Khwarshi, Tsez</li>
+</ul>
+<p>While the suffixes, prefixes and infixes encode only prohibition, some additional remarks are necessary about the circumfixes used in Agul, Kryz, Lak, and Tabasaran. The prefixal part of the circumfix (<em>mV-</em> in all four languages) is the specialised prohibitive marker, while the functions of the suffixal parts are more diverse. For Lak, the case is rather clear: the suffixes <em>-ara</em> and <em>-ari</em> mark prohibition and, additionally, second person singular or plural (1).</p>
+<ol class="example" style="list-style-type: decimal">
+<li>Lak <span class="citation">(Жирков, <a href="#ref-zhirkov1955">1965</a>: 119)</span>
+<ul>
+<table>
+<tr>
+<td>
+<i><b>ma</b>-čič-<b>ara</b> 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+proh-write-proh.sg 
+</td>
+</tr>
+<td>
+<i><b>ma</b>-čič-<b>ari</b> 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+proh-write-proh.pl 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+‘Don’t write!’
+</td>
+</tr>
+</table>
+</ul></li>
+</ol>
+<p>In Agul (2) and Tabasaran (3), the suffixes <em>-an</em> and <em>-an-aj</em> are less transparent. The imperative is traditionally formed by attaching these suffixes to the verb stem; in modern Agul and Tabasaran, however, the second person singular imperative is reduced to the bare stem, while the second person plural form is marked by <em>-aj</em>, i.e. <em>-an</em> is dismissed in both forms. In the prohibitive, <em>-an</em> is still obligatory, both in the singular and in the plural. This leads to two possible interpretations: Either the prohibitive is formed by prefixing the traditional imperatives (marked for number) with <em>mV-</em>, or the prohibitive has a specialised circumfixal marker <em>mV-…-an/-an-aj</em> which is attached to the bare stem. We opted for the second interpretation, as the contemporary languages use <em>-an</em> only for the prohibitive, i.e. the functional range of <em>-an</em> seems to have narrowed down to negative contexts.</p>
+<ol start="2" class="example" style="list-style-type: decimal">
+<li>Agul <span class="citation">(Магометов, <a href="#ref-magometov1970">1970</a>: 141)</span>
+<ul>
+<table>
+<tr>
+<td>
+<i><b>ma</b>-χur-<b>an</b> 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+proh-read-proh 
+</td>
+</tr>
+<td>
+<b>ma</b>-χur-<b>an-aj</b> 
+</td>
+</tr>
+<tr>
+<td>
+proh-read-proh-pl 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+‘Don’t read!’
+</td>
+</tr>
+</table>
+</ul></li>
+<li>Tabasaran <span class="citation">(Алексеев, <a href="#ref-alekseevshixalieva2003">2003</a>: 70)</span>
+<ul>
+<table>
+<tr>
+<td>
+<i><b>mu</b>-ulup-</b>an</b> 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+proh-show-proh 
+</td>
+</tr>
+<td>
+<b>mu</b>-ulup-<b>an-aj</b> 
+</td>
+</tr>
+<tr>
+<td>
+proh-show-proh-pl 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+‘Don’t show!’
+</td>
+</tr>
+</table>
+</ul></li>
+</ol>
+<p>Kryz (4) makes yet another distinction: transitive verbs are marked for number, while intransitive verbs are only marked for gender. Furthermore, if there is a preverb, the prefixal marker <em>ma-</em> must be inserted between the preverb and the stem, blurring the lines between prefix and infix.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
+<ol start="4" class="example" style="list-style-type: decimal">
+<li>Kryz <span class="citation">(Authier, <a href="#ref-authier2009">2009</a>: 158)</span></li>
+</ol>
+<ul>
+<table>
+<tr>
+<td>
+<i>q’irš.a-k 
+</td>
+</i>
+<td>
+<i>ča-da-b-ha 
+</td>
+</i>
+<td>
+<i>buluša 
+</td>
+</i>
+<td>
+<i><b>ma</b>-nz-<b>u</b> 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+mud-sub 
+</td>
+<td>
+pv-neg-f-stain.pf(part) 
+</td>
+<td>
+dress 
+</td>
+<td>
+proh-wash-proh.sg.trans 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+‘Don’t wash the dress which is not mud stained!’ (transitive -u for 2sg)
+</td>
+</tr>
+</table>
+</ul>
+</div>
+<div id="regular-imperative-special-prohibitive-marker" class="section level3">
+<h3>Regular imperative + special prohibitive marker</h3>
+<p>The second most common pattern in the sample of languages is the combination of a regular imperative with a specialised prohibitive marker. However, this pattern is infrequent compared to the one previously described: Only 18% of the languages make use of it.</p>
+<p>The six languages in this category are: - Indo-European: Armenian - Khinalug isolate - Lezgic: Udi - All 3 Nakh languages: Tsova-Tush, Ingush, Standard Chechen</p>
+<p>Affixes and separate particles are used as prohibitive markers: Udi uses a prefix, Khinalug has a suffix,<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> and the other four languages use separate particles (5).<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
+<ol start="5" class="example" style="list-style-type: decimal">
+<li>Tsova-Tush <span class="citation">(Дешериевa, <a href="#ref-desherieva1999">1999</a>: 170)</span>
+<ul>
+<table>
+<tr>
+<td>
+<i><b>ma</b> 
+</td>
+</i>
+<td>
+<i>vašlib 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+proh 
+</td>
+<td>
+shave.imp 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+‘Don’t shave!’
+</td>
+</tr>
+</table>
+</ul></li>
+</ol>
+</div>
+<div id="regular-imperative-regular-negation-marker" class="section level3">
+<h3>Regular imperative + regular negation marker</h3>
+<p>All three languages from the Turkic family, i.e. Kumyk, Nogai, and Northern Azerbaijani, use the regular imperative together with a regular negation marker to encode the prohibitive. They mark the prohibitive with the general negation suffix <em>-ma</em> (with different phonological variants).</p>
+<p>In Kumyk (6) and Nogai (7), the bare stem serves as the imperative of the second person singular, i.e. one could also argue that they do in fact use another verb form than the imperative to form the prohibitive. However, we decided to analyse the form as an imperative, as it is for example not identical to the cases of Agul and Tabasaran. In those languages, the use of the bare stem as the second singular imperative form seems to be a recent development, and the original imperative form still exists, although it is probably mostly out of use. In Nogai and Kumyk, there is no such alternative to the use of the bare stem as the imperative.</p>
+<ol start="6" class="example" style="list-style-type: decimal">
+<li>Kumyk <span class="citation">(Абдуллаева, <a href="#ref-abdullaevaetal2014">2014</a>: 86)</span><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
+<ul>
+<table>
+<tr>
+<td>
+<i>oχu-<b>ma</b> 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+read-neg 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+‘Don’t read!’
+</td>
+</tr>
+</table>
+</ul></li>
+<li>Nogai <span class="citation">(Баскаков, <a href="#ref-baskakov1940">1940</a>: 87)</span>
+<ul>
+<table>
+<tr>
+<td>
+<i>al-ma 
+</td>
+</i>
+</tr>
+<tr>
+<td>
+take-neg 
+</td>
+</tr>
+<tr>
+<td colspan="3">
+‘Don’t take!’
+</td>
+</tr>
+</table>
+</ul></li>
+</ol>
+</div>
+<div id="remark-on-the-marker-forms" class="section level3">
+<h3>Remark on the marker forms</h3>
+<p>Following Bancel et al.’s <span class="citation">(<a href="#ref-banceletal2021">2021</a>)</span> finding that the particle <em>*ma</em> functions as a prohibitive/negative marker in a wide variety of genetically and geographically distant languages, the markers of the TALD language sample were analysed for their phonological form. 17 languages have an <em>mV</em> marker and 16 do not, so no general tendency can be identified. However, the genealogical distribution is unambiguous: Standard Dargwa (and all its varieties), Armenian (the only Indo-European language), the Lak isolate, almost all Lezgic languages, all Nakh languages, and all Turkic languages have an <em>mV</em> marker. On the other hand, all Avar-Andic languages, the Khinalug isolate, and all Tsezic languages employ other forms. Archi (Lezgic) is the only outlier in the sample, as it does not have the Lezgic branch’s default <em>mV</em> marker. Interestingly, markers that are not <em>mV</em> are exclusively suffixes, while the <em>mV</em> markers occur in varying places (prefix, infix, circumfix, suffix, free particle).</p>
+</div>
+</div>
+<div id="areal-distribution" class="section level2">
+<h2>Areal distribution</h2>
+<p>In the TALD sample, only three out of the four categories presented in the WALS are attested. Table 2 shows a numerical comparison of the WALS and the TALD samples:</p>
+<p>Table 2. Comparison of the prohibitive encoding strategies in the WALS and TALD samples</p>
+<table>
+<thead>
+<tr class="header">
+<th>Encoding type</th>
+<th>WALS</th>
+<th></th>
+<th>TALD sample</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Regular imperative + regular negation marker</td>
+<td>113</td>
+<td>23%</td>
+<td>3</td>
+<td>9%</td>
+</tr>
+<tr class="even">
+<td>Regular imperative + special prohibitive marker</td>
+<td>182</td>
+<td>37%</td>
+<td>6</td>
+<td>18%</td>
+</tr>
+<tr class="odd">
+<td>Non-imperative verb form + regular negation marker</td>
+<td>55</td>
+<td>11%</td>
+<td>0</td>
+<td>0%</td>
+</tr>
+<tr class="even">
+<td>Non-imperative verb form + special prohibitive marker</td>
+<td>146</td>
+<td>29%</td>
+<td>24</td>
+<td>73%</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>496</td>
+<td>100%</td>
+<td>33</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<p>The languages of the TALD sample show a clear preference for the combination of non-imperative verb forms and a specialised prohibitive marker. The most common verb form is the bare stem, but other stem types such as present and past stems are also attested. Suffixes are the preferred affix type, but circumfixes, infixes and prefixes are also attested.</p>
+<p>Language family is a good predictor for the encoding strategy: all Avar-Andic, Tsezic, and Dargwa varieties, almost all Lezgic languages, and the Lak isolate make use of the <strong>non-imperative verb form + special prohibitive marker</strong> strategy; all Nakh languages, Armenian (the only Indo-European language), the Khinalug isolate and one Lezgic language belong to the <strong>regular imperative + special prohibitive marker</strong> category; and only the agglutinative Turkic languages encode prohibitives with a <strong>regular imperative + regular negation marker</strong>. Also, the marker form (<em>mV</em> vs. other forms) is strongly dependent on the language family, with the Lezgic language Archi being the only exception to the rule.</p>
+<hr />
+</div>
+</div>
+<div id="section" class="section level1 tabset tabset-fade tabset-pills">
+<h1></h1>
+<div id="cite-text" class="section level2">
+<h2>Cite (text)</h2>
+
+<script>
+function copytext(el) {
+    var $tmp = $("<textarea>");
+    $("body").append($tmp);
+    $tmp.val($(el).text()).select();
+    document.execCommand("copy");
+    $tmp.remove();
+}    
+</script>
+<button class="copybutt" onclick="copytext('#cite1')"><span><i class="fas fa-copy"></i></span></button>
+<div id="cite1">
+
+<p>Ochs, Samira. (2021). “Prohibitive and its relation with the imperative.” In: <em>Typological Atlas of the languages of Daghestan (TALD)</em>. Ed. by Daniel, Michael, Konstantin Filatov, George Moroz, Timofey Mukhin, Chiara Naccarato, and Samira Verhees. (2020). Moscow: Linguistic Convergence Laboratory, HSE University. URL: <a href="http://lingconlab.ru/dagatlas" class="uri">http://lingconlab.ru/dagatlas</a>. Accessed on <span id="currentDate"></span>
+</div>
+<script>
+  var today = new Date();
+  var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + '.';
+  document.getElementById("currentDate").innerHTML = date;
+</script>
+</p>
+</div>
+<div id="cite-bibtex" class="section level2">
+<h2>Cite (BibTeX)</h2>
+
+<button class="copybutt" onclick="copytext('#cite2')"><span><i class="fas fa-copy"></i></span></button>
+<div id="cite2">
+
+<pre><code>@incollection{222021,
+  title = {Prohibitive and its relation with the imperative},
+  author = {Samira Ochs},
+  year = {2021},
+  editor = {Michael Daniel and Konstantin Filatov and George Moroz and Timofey Mukhin and Chiara Naccarato and Samira Verhees},
+  publisher = {Linguistic Convergence Laboratory, NRU HSE},
+  address = {Moscow},
+  booktitle = {Typological Atlas of the languages of Daghestan (TALD)},
+  url = {http://lingconlab.ru/dagatlas},
+}</code></pre>
+
+</div>
+
+</div>
+</div>
+<div id="section-1" class="section level1 unnumbered">
+<h1></h1>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1>References</h1>
+<div id="refs" class="references">
+<div id="ref-aikhenvald2017">
+<p>Aikhenvald, A. Y. (2017). Imperatives and commands: A cross-linguistic view. In A. Aikhenvald &amp; R. Dixon (Eds.), <em>Commands. A cross-linguistic typology</em> (pp. 1–45). Oxford University Press.</p>
+</div>
+<div id="ref-alekseev1994">
+<p>Alekseev, M. E. (1994). Rutul. In R. Smeets (Ed.), <em>The indigenous languages of the caucasus. Volume 4. Part 2</em> (pp. 147–212). Caravan Books.</p>
+</div>
+<div id="ref-authier2009">
+<p>Authier, G. (2009). <em>Grammaire kryz</em>. Peeters.</p>
+</div>
+<div id="ref-auweralejeune2013">
+<p>Auwera, L. &amp;. G., Johan van der &amp; Lejeune. (2013). The prohibitive. In M. S. Dryer &amp; M. Haspelmath (Eds.), <em>The world atlas of language structures online</em>. Max Planck Institute for Evolutionary Anthropology. <a href="https://wals.info/chapter/71">https://wals.info/chapter/71</a></p>
+</div>
+<div id="ref-banceletal2021">
+<p>Bancel, A. M. &amp;. B. J. D., Pierre J. &amp; de l’Etang. (2021). The proto-sapiens prohibitive/negative particle *ma. <em>Mother Tongue</em>, <em>22</em>(1), 223–241.</p>
+</div>
+<div id="ref-forker2020dargwa">
+<p>Forker, D. (2020). <em>A grammar of sanzhi dargwa</em>. Language Science Press.</p>
+</div>
+<div id="ref-molochieva2010">
+<p>Molochieva, Z. (2010). <em>Tense, aspect and mood in chechen</em> [PhD thesis]. Universität Leipzig.</p>
+</div>
+<div id="ref-abdullaevaetal2014">
+<p>Абдуллаева, Н. Э. &amp;. К., Айшат З. &amp; Гаджиахмедов. (2014). <em>Современный кумыкский язык [contemporary kumyk]</em>.</p>
+</div>
+<div id="ref-alekseevshixalieva2003">
+<p>Алексеев, С. Х., Михаил Е. &amp; Шихалиева. (2003). <em>Табасаранский язык [tabasaran]</em>. Академия.</p>
+</div>
+<div id="ref-baskakov1940">
+<p>Баскаков, Н. А. (1940). <em>Ногайский язык и его диалекты: Грамматика, тексты и словарь [nogai and its dialects: Grammar, texts and dictionary]</em>. Издательство Академии наук СССР.</p>
+</div>
+<div id="ref-desheriev1959">
+<p>Дешериев, Ю. Д. (1959). <em>Грамматика хиналугского языка [khinalug grammar]</em>. Академия.</p>
+</div>
+<div id="ref-desherieva1999">
+<p>Дешериевa, T. И. (1999). Нахские языки [nakh languages]. In М. Е. Алексеев (Ed.), <em>Языки мира. Кавказские языки. [Languages of the world. Caucasian languages.]</em> (pp. 166–173). Российская академия наук.</p>
+</div>
+<div id="ref-dmitriev1940">
+<p>Дмитриев, Н. К. (1940). <em>Грамматика кумыксого языка [kumyk grammar]</em>. Академия.</p>
+</div>
+<div id="ref-zhirkov1955">
+<p>Жирков, Л. И. (1965). <em>Лакский язык [lak]</em>. Академия.</p>
+</div>
+<div id="ref-ibragimov2004">
+<p>Ибрагимов, Г. Х. (2004). <em>Рутульский язык [rutul]</em>. Народы Дагестана.</p>
+</div>
+<div id="ref-kibriketal1972">
+<p>Кибрик, С. В. &amp;. О., Александр Е. &amp; Кодзасов. (1972). <em>Фрагменты грамматики хиналугского языка [fragments of khinalug grammar]</em>. Издательство Академии наук СССР.</p>
+</div>
+<div id="ref-magometov1970">
+<p>Магометов, А. А. (1970). <em>Агульский язык [aghul]</em>. Мецниереба.</p>
+</div>
+<div id="ref-maxmudova2002">
+<p>Махмудова, С. М. (2002). <em>Грамматические классы слов и грамматические категории рутульского языка [grammatical word classes and grammatical categories of rutul]</em> [PhD thesis]. Dagestan State University.</p>
+</div>
+<div id="ref-sumbatovalander2014">
+<p>Сумбатова, Ю. А., Нина Р. &amp; Ландер. (2014). <em>Даргинский говор селения танты: Грамматический очерк. Вопросы синтаксиса</em>. Языки славянской культуры.</p>
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>This is also true for the two Dargwa varieties Sanzhi and Tanti <span class="citation">(Forker, <a href="#ref-forker2020dargwa">2020</a>: 298–299)</span>; <span class="citation">(Сумбатова, <a href="#ref-sumbatovalander2014">2014</a>)</span> as well as for the Rutul varieties Luchek and Mukhad <span class="citation">(Alekseev, <a href="#ref-alekseev1994">1994</a>: 234)</span>, <span class="citation">(Махмудова, <a href="#ref-maxmudova2002">2002</a>: 170)</span>, <span class="citation">(Ибрагимов, <a href="#ref-ibragimov2004">2004</a>: 107)</span>.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>Khinalug is the only language in the sample that has only one affix to mark both prohibition and number. The suffixes <em>-kuj</em> (Sg) and <em>-kun</em> (Pl) are attached to the regular imperative and serve as a portmanteau morpheme <span class="citation">(Дешериев, <a href="#ref-desheriev1959">1959</a>: 116–117)</span>, <span class="citation">(Кибрик, <a href="#ref-kibriketal1972">1972</a>: 191)</span>.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>Molochieva <span class="citation">(<a href="#ref-molochieva2010">2010</a>: 254)</span> defines Chechen <em>ma-</em> as a clitic, i.e. a syntactically independent but phonologically dependent morpheme.<a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>In Kumyk, the plural marker <em>-gɨz/giz</em> is attached after the negation marker (see Dmitriev <span class="citation">(<a href="#ref-dmitriev1940">1940</a>: 119)</span>, i.e. <em>oχu-ma-gɨz</em> would be the second person plural (‘Don’t read!’). This is also true for Azerbaijani (<em>-jın</em>) and probably also for Nogai, although Baskakov <span class="citation">(Баскаков, <a href="#ref-baskakov1940">1940</a>: 87)</span> is not clear about this. However, the agglutinative character of Turkic languages makes this kind of ‘morpheme stacking’ probable for Nogai as well.<a href="#fnref4" class="footnote-back">↩</a></p></li>
+</ol>
+</div>
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+</head>
+
+<body>
+    <div class="footer-basic">
+        <footer>
+            
+            <div class='lic'><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br /><i>Typological Atlas of the languages of Daghestan </i> (<i>TALD</i>) is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+            <div class="social"><a href="https://github.com/LingConLab/TALD" target="_blank"><span class="iconify" data-icon="octicon:logo-github-16"></span></a></div>
+            </div>
+            
+            <p class="copyright">2020<script>new Date().getFullYear()>2020&&document.write("-"+new Date().getFullYear());</script>,  Linguistic Convergence Laboratory, HSE University</p>
+        </footer>
+    </div>
+    <script type="text/javascript" src="./js/links.js"></script> <!--это чтобы ссылки открывались в новом окне -->
+</body>
+
+</html>
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

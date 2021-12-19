@@ -279,25 +279,12 @@ $(document).ready(function () {
         <li>
   <a href="./about.html">About</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+<li>
+  <a href="./features.html">
     <span class="fa fa-atlas"></span>
      
     Features
-     
-    <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="./topics.html">Major topics</a>
-    </li>
-    <li>
-      <a href="./features.html">Features</a>
-    </li>
-    <li>
-      <a href="./method.html">Method</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="./changes.html">Changes</a>
@@ -322,7 +309,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Distance contrasts expressed by demonstratives</h1>
 <h4 class="author">Timofey Mukhin</h4>
-<h4 class="date">Last update: August 2021</h4>
+<h4 class="date">Last update: November 2020</h4>
 
 </div>
 
@@ -333,7 +320,7 @@ $(document).ready(function () {
 <p>See <a href="distance_contrasts_map.html">data and maps</a>.</p>
 <div id="number-of-contrasts" class="section level2">
 <h2>Number of contrasts</h2>
-<p>Both mono- and polycentric demonstratives may distinguish more than two ways of distance contrasts.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Some languages of the sample, in addition to distance-marked demonstratives, have a demonstrative that is neutral. For example, Ingush has the demonstratives <em>je</em> (proximal) and <em>dwaara</em> (non-proximal), and the demonstrative <em>yz</em>, which does not express distance contrast<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> <span class="citation">(Nichols <a href="#ref-nichols2011">2011</a>: 179)</span>. Systems with a neutral demonstrative have been classified as featuring a two-way contrast.</p>
+<p>Both mono- and polycentric demonstratives may distinguish more than two ways of distance contrasts.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Some languages of the sample, in addition to distance-marked demonstratives, have a demonstrative that is neutral. For example, Ingush has the demonstratives <em>je</em> (proximal) and <em>dwaara</em> (non-proximal), and the demonstrative <em>yz</em>, which does not express distance contrast<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a> <span class="citation">(Nichols, <a href="#ref-nichols2011">2011</a>: 179)</span>. Systems with a neutral demonstrative have been classified as featuring a two-way contrast.</p>
 <p><a href="distance_contrasts_map.html">Maps</a> show the number of distance contrasts expressed by demonstratives. As presented on the map, demonstratives of all languages of the sample express either two- or three-way distance contrasts. Languages with a two-way opposition are less common than those with a three-way opposition: languages with the latter type of opposition are almost twice as many as the languages of the former type, see <a href="#m1">Table 1</a>. Languages belonging to the same branch are almost always dissimilar in the number of contrasts expressed by demonstratives. Only Lezgic languages seem to have consistently three-way contrast systems (except for Budukh, which features a two-way system).</p>
 <div id="m1" class="section level3">
 <h3>Table 1. The number of distance contrasts expressed by demonstratives</h3>
@@ -355,7 +342,7 @@ $(document).ready(function () {
 </tr>
 </tbody>
 </table>
-<p>In the languages of Daghestan, demonstrative systems with a three-way contrast are more common, whereas in general in the languages of the world systems expressing a two-way contrast are the most frequent option (see a similar map made by <span class="citation">(Diessel <a href="#ref-diessel2013">2013</a>)</span> for WALS).</p>
+<p>In the languages of Daghestan, demonstrative systems with a three-way contrast are more common, whereas in general in the languages of the world systems expressing a two-way contrast are the most frequent option (see a similar map made by <span class="citation">(Diessel, <a href="#ref-diessel2013">2013</a>)</span> for WALS).</p>
 <p>According to Anderson and Keenan’s approach, only systems that distinguish three (or more) ways of contrast are divided into distal- or person-oriented types. Note that two-way contrast systems can also have demonstratives defined relative to different deictic centers. In the sample, there are 4 such languages: Akhvakh, Chamalal, Tindi and Lak. In these languages, demonstratives express two-way contrast, but they are described relative to two deictic centers (i.e. <strong>this, in the speaker’s domain</strong> and <strong>this, in the hearer’s domain</strong>), thus they are polycentric.</p>
 <hr />
 </div>
@@ -365,7 +352,21 @@ $(document).ready(function () {
 <h1></h1>
 <div id="cite-text" class="section level2">
 <h2>Cite (text)</h2>
-<p>Mukhin, Timofey. 2020. “Distance contrasts expressed by demonstratives.” In: Daniel, Michael, George Moroz, Timofey Mukhin, Chiara Naccarato, Samira Verhees and Konstantin Filatov. 2020. <em>Typological Atlas of the languages of Daghestan (TALD)</em>. Moscow: Linguistic Convergence Laboratory, HSE University. URL: <a href="http://lingconlab.ru/dagatlas" class="uri">http://lingconlab.ru/dagatlas</a>. Accessed on  <span id="currentDate"></span>
+
+<script>
+function copytext(el) {
+    var $tmp = $("<textarea>");
+    $("body").append($tmp);
+    $tmp.val($(el).text()).select();
+    document.execCommand("copy");
+    $tmp.remove();
+}    
+</script>
+<button class="copybutt" onclick="copytext('#cite1')"><span><i class="fas fa-copy"></i></span></button>
+<div id="cite1">
+
+<p>Mukhin, Timofey. (2020). “Distance contrasts expressed by demonstratives.” In: <em>Typological Atlas of the languages of Daghestan (TALD)</em>. Ed. by Daniel, Michael, Konstantin Filatov, George Moroz, Timofey Mukhin, Chiara Naccarato, and Samira Verhees. (2020). Moscow: Linguistic Convergence Laboratory, HSE University. URL: <a href="http://lingconlab.ru/dagatlas" class="uri">http://lingconlab.ru/dagatlas</a>. Accessed on <span id="currentDate"></span>
+</div>
 <script>
   var today = new Date();
   var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + '.';
@@ -375,16 +376,23 @@ $(document).ready(function () {
 </div>
 <div id="cite-bibtex" class="section level2">
 <h2>Cite (BibTeX)</h2>
-<pre><code>@incollection{Mukhin, Timofey2020,
+
+<button class="copybutt" onclick="copytext('#cite2')"><span><i class="fas fa-copy"></i></span></button>
+<div id="cite2">
+
+<pre><code>@incollection{102020,
   title = {Distance contrasts expressed by demonstratives},
   author = {Timofey Mukhin},
   year = {2020},
-  editor = {Michael Daniel and George Moroz and Timofey Mukhin and Chiara Naccarato and Samira Verhees and Konstantin Filatov},
+  editor = {Michael Daniel and Konstantin Filatov and George Moroz and Timofey Mukhin and Chiara Naccarato and Samira Verhees},
   publisher = {Linguistic Convergence Laboratory, NRU HSE},
   address = {Moscow},
   booktitle = {Typological Atlas of the languages of Daghestan (TALD)},
   url = {http://lingconlab.ru/dagatlas},
 }</code></pre>
+
+</div>
+
 </div>
 </div>
 <div id="section-1" class="section level1 unnumbered">
@@ -394,13 +402,13 @@ $(document).ready(function () {
 <h1>References</h1>
 <div id="refs" class="references">
 <div id="ref-diessel2013">
-<p>Diessel, Holger. 2013. “Distance Contrasts in Demonstratives.” In <em>The World Atlas of Language Structures Online</em>, edited by Matthew S. Dryer and Martin Haspelmath. Leipzig: Max Planck Institute for Evolutionary Anthropology. <a href="https://wals.info/chapter/41">https://wals.info/chapter/41</a>.</p>
+<p>Diessel, H. (2013). Distance contrasts in demonstratives. In M. S. Dryer &amp; M. Haspelmath (Eds.), <em>The world atlas of language structures online</em>. Max Planck Institute for Evolutionary Anthropology. <a href="https://wals.info/chapter/41">https://wals.info/chapter/41</a></p>
 </div>
 <div id="ref-nichols1994">
-<p>Nichols, Johanna. 1994. “Chechen.” In <em>The Indigenous Languages of the Caucasus, Vol. 4: The Northeast Caucasian Languages, Part 2</em>, edited by Rieks Smeets, 1–77. Delmar, NY: Caravan Press.</p>
+<p>Nichols, J. (1994). Chechen. In R. Smeets (Ed.), <em>The indigenous languages of the caucasus, vol. 4: The northeast caucasian languages, part 2</em> (pp. 1–77). Caravan Press.</p>
 </div>
 <div id="ref-nichols2011">
-<p>———. 2011. <em>Ingush Grammar</em>. Berkeley/Los Angeles: University of California Press.</p>
+<p>Nichols, J. (2011). <em>Ingush grammar</em>. University of California Press.</p>
 </div>
 </div>
 </div>
@@ -408,11 +416,32 @@ $(document).ready(function () {
 <hr />
 <ol>
 <li id="fn1"><p>In this paper I refer to demonstratives of both mono- and polycentric systems that mark a three-way contrast as proximal, medial and distal and those that express a two-way contrast as proximal and non-proximal.<a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>The demonstrative <em>yz</em> is described as ‘aforementioned’ and it is mainly used anaphorically as the third person pronoun. But historically it is developed from the medial demonstrative <span class="citation">(Nichols <a href="#ref-nichols2011">2011</a>: 658)</span>. The same seems to be true for Chechen <span class="citation">(Nichols <a href="#ref-nichols1994">1994</a>: 34)</span>.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>The demonstrative <em>yz</em> is described as ‘aforementioned’ and it is mainly used anaphorically as the third person pronoun. But historically it is developed from the medial demonstrative <span class="citation">(Nichols, <a href="#ref-nichols2011">2011</a>: 658)</span>. The same seems to be true for Chechen <span class="citation">(Nichols, <a href="#ref-nichols1994">1994</a>: 34)</span>.<a href="#fnref2" class="footnote-back">↩</a></p></li>
 </ol>
 </div>
 
-<p align='center'>2020<script>new Date().getFullYear()>2020&&document.write("-"+new Date().getFullYear());</script>,  Linguistic Convergence Laboratory, HSE University</p><script type="text/javascript" src="./js/links.js"></script> <!--это чтобы ссылки открывались в новом окне -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+</head>
+
+<body>
+    <div class="footer-basic">
+        <footer>
+            
+            <div class='lic'><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br /><i>Typological Atlas of the languages of Daghestan </i> (<i>TALD</i>) is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+            <div class="social"><a href="https://github.com/LingConLab/TALD" target="_blank"><span class="iconify" data-icon="octicon:logo-github-16"></span></a></div>
+            </div>
+            
+            <p class="copyright">2020<script>new Date().getFullYear()>2020&&document.write("-"+new Date().getFullYear());</script>,  Linguistic Convergence Laboratory, HSE University</p>
+        </footer>
+    </div>
+    <script type="text/javascript" src="./js/links.js"></script> <!--это чтобы ссылки открывались в новом окне -->
+</body>
+
+</html>
 
 
 

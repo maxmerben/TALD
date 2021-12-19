@@ -1,4 +1,4 @@
-lang	aff	family	gltc	lat	lon	general_location	lang_col	aff_col	new_col
+lang	aff	family	gltc_lang	lat	lon	general_location	lang_col	aff_col	new_col
 Akhvakh	Andic	East Caucasian	akhv1239	42.40035	46.30369	glottolog coordinates	#9900ff	#9900ff	#9900ff
 Andi	Andic	East Caucasian	andi1255	42.80785	46.29187	glottolog coordinates	#003366	#9900ff	#003366
 Bagvalal	Andic	East Caucasian	bagv1239	42.39664	46.1041	glottolog coordinates	#000066	#9900ff	#000066

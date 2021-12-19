@@ -293,25 +293,12 @@ $(document).ready(function () {
         <li>
   <a href="./about.html">About</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+<li>
+  <a href="./features.html">
     <span class="fa fa-atlas"></span>
      
     Features
-     
-    <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="./topics.html">Major topics</a>
-    </li>
-    <li>
-      <a href="./features.html">Features</a>
-    </li>
-    <li>
-      <a href="./method.html">Method</a>
-    </li>
-  </ul>
 </li>
 <li>
   <a href="./changes.html">Changes</a>
@@ -344,10 +331,12 @@ $(document).ready(function () {
 <li><a href="#daghestan-as-a-linguistic-area">Daghestan as a linguistic area</a></li>
 <li><a href="#map-visualizations">Map visualizations</a></li>
 <li><a href="#contribute-to-the-atlas">Contribute to the Atlas</a></li>
+<li><a href="#access-to-data">Access to data</a></li>
 <li><a href="#how-to-cite">How to cite</a><ul>
 <li><a href="#text">Text</a></li>
 <li><a href="#bibtex">BibTeX</a></li>
 </ul></li>
+<li><a href="#references">References</a></li>
 </ul>
 </div>
 
@@ -380,7 +369,8 @@ $(document).ready(function () {
 <li>General datapoints (feature only)</li>
 </ol>
 <p>Each of these visualizations has its benefits and drawbacks, so we allow the user to toggle between the different options.</p>
-<p>Below are some examples from the chapter on <a href="">Morning greetings</a>, which describes the two main ways to greet someone in the morning in the languages of Daghestan: wishing them a good morning or asking them whether they woke up.</p>
+<p>Below are some examples from the chapter on <a href="morning_greetings.html">Morning greetings</a>, which describes the two main ways to greet someone in the morning in the languages of Daghestan: wishing them a good morning or asking them whether they woke up.</p>
+<p>For map visualizations we use the <a href="https://github.com/ropensci/lingtypology">Lingtypology package</a> <span class="citation">(Moroz <a href="#ref-moroz2017">2017</a>)</span> for <a href="https://www.r-project.org/">R</a>.</p>
 <div id="extrapolated-data" class="section level3">
 <h3>1. Extrapolated data</h3>
 <p>This is our default visualization. It represents each language as a cluster of dots, which correspond to villages where a certain language is spoken.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> The inside of each dot is colored by language; languages from the same group have similar colors (e.g. all Lezgic languages are some shade of green). Hover over a dot to see the name of the language, and click to view a popup with a link to the language’s page in the <a href="https://glottolog.org">Glottolog</a> database and the name of the village. The color of the outer dots indicates the value of a linguistic feature.</p>
@@ -414,12 +404,29 @@ $(document).ready(function () {
 <p>If you would like to contribute a chapter and / or data to the Atlas because you are studying a certain topic in the languages of Daghestan, or you are a student looking for an internship, do not hesitate to contact us! You can find our contact info under <a href="https://timtim1342.github.io/team.html">Team</a>.</p>
 <p>To get a better idea of our methodology and what you will have to do if you decide to become a contributor, see our <a href="https://sverhees.github.io/dagatlas_masterskaya/index.html">Contributor Manual</a>.</p>
 </div>
+<div id="access-to-data" class="section level1">
+<h1>Access to data</h1>
+<p>The data can be accessed through the interface of the atlas, or downloaded directly from the <a href="https://github.com/LingConLab/TALD">GitHub page</a>.</p>
+</div>
 <div id="how-to-cite" class="section level1 tabset tabset-fade tabset-pills">
 <h1>How to cite</h1>
 <div id="text" class="section level2">
 <h2>Text</h2>
-<p>Daniel, Michael, Konstantin Filatov, George Moroz, Timofey Mukhin, Chiara Naccarato and Samira Verhees. 2020. <em>Typological Atlas of the languages of Daghestan (TALD)</em>. Moscow: Linguistic Convergence Laboratory, HSE University. URL: <a href="http://lingconlab.ru/dagatlas" class="uri">http://lingconlab.ru/dagatlas</a>. Accessed on 
-<span id="currentDate"></span>
+
+<script>
+function copytext(el) {
+    var $tmp = $("<textarea>");
+    $("body").append($tmp);
+    $tmp.val($(el).text()).select();
+    document.execCommand("copy");
+    $tmp.remove();
+}    
+</script>
+<button class="copybutt" onclick="copytext('#cite1')"><span><i class="fas fa-copy"></i></span></button>
+<div id="cite1">
+
+<p>Daniel, Michael, Konstantin Filatov, George Moroz, Timofey Mukhin, Chiara Naccarato and Samira Verhees. 2020. <em>Typological Atlas of the languages of Daghestan</em> (<em>TALD</em>). Moscow: Linguistic Convergence Laboratory, HSE University. URL: <a href="http://lingconlab.ru/dagatlas" class="uri">http://lingconlab.ru/dagatlas</a>. Accessed on <span id="currentDate"></span>
+</div>
 <script>
   var today = new Date();
   var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate() + '.';
@@ -429,6 +436,10 @@ $(document).ready(function () {
 </div>
 <div id="bibtex" class="section level2">
 <h2>BibTeX</h2>
+
+<button class="copybutt" onclick="copytext('#cite2')"><span><i class="fas fa-copy"></i></span></button>
+<div id="cite2">
+
 <pre><code>@book{tald2020,
   address   = {Moscow},
   author    = {Daniel, Michael and Filatov, Konstantin and Moroz, George and Mukhin, Timofey and Naccarato, Chiara and Verhees, Samira},
@@ -437,10 +448,21 @@ $(document).ready(function () {
   url       = {http://lingconlab.ru/dagatlas},
   year      = {2020}
 }</code></pre>
+
+</div>
+
+</div>
+</div>
+<div id="references" class="section level1">
+<h1>References</h1>
 <div class="tocify-extend-page" data-unique="tocify-extend-page" style="height: 0;">
 
 </div>
 <!-- remove extra whitespace at bottom produced by floating table of contents and plots. -->
+<div id="refs" class="references">
+<div id="ref-moroz2017">
+<p>Moroz, George. 2017. <em>Lingtypology: Easy Mapping for Linguistic Typology</em>. <a href="https://CRAN.R-project.org/package=lingtypology">https://CRAN.R-project.org/package=lingtypology</a>.</p>
+</div>
 </div>
 </div>
 <div class="footnotes">
@@ -450,7 +472,28 @@ $(document).ready(function () {
 </ol>
 </div>
 
-<p align='center'>2020<script>new Date().getFullYear()>2020&&document.write("-"+new Date().getFullYear());</script>,  Linguistic Convergence Laboratory, HSE University</p><script type="text/javascript" src="./js/links.js"></script> <!--это чтобы ссылки открывались в новом окне -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://code.iconify.design/2/2.0.3/iconify.min.js"></script>
+</head>
+
+<body>
+    <div class="footer-basic">
+        <footer>
+            
+            <div class='lic'><a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br /><i>Typological Atlas of the languages of Daghestan </i> (<i>TALD</i>) is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.
+            <div class="social"><a href="https://github.com/LingConLab/TALD" target="_blank"><span class="iconify" data-icon="octicon:logo-github-16"></span></a></div>
+            </div>
+            
+            <p class="copyright">2020<script>new Date().getFullYear()>2020&&document.write("-"+new Date().getFullYear());</script>,  Linguistic Convergence Laboratory, HSE University</p>
+        </footer>
+    </div>
+    <script type="text/javascript" src="./js/links.js"></script> <!--это чтобы ссылки открывались в новом окне -->
+</body>
+
+</html>
 
 
 
