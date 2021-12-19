@@ -266,7 +266,7 @@ To get a better idea of our methodology and what you will have to do if you deci
 
 # Access to data
 
-The data can be accessed through the interface of the atlas, or downloaded directly from the [GitHub page](https://github.com/LingConLab/TALD/tree/main/sourse_code).
+The data can be accessed through the interface of the atlas, or downloaded directly from the [GitHub page](https://github.com/LingConLab/TALD/tree/main/source_code).
 
 # How to cite{.tabset .tabset-fade .tabset-pills} 
 
